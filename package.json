@@ -1,0 +1,16 @@
+{
+  "name": "fastify-typescript-practice",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/node": "^17.0.16",
+    "json-schema-to-ts": "^1.6.5"
+  },
+  "dependencies": {
+    "axios": "^0.25.0",
+    "dotenv": "^16.0.0",
+    "dummy-data-generator": "^1.7.3",
+    "fastify": "^3.27.1"
+  }
+}
