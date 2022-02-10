@@ -1,5 +1,6 @@
 import fastify from "fastify";
 import {userRoute} from './routes/users/user';
+import {bookRoute} from './routes/books/book';
 
 const fastifyServer = fastify({
     logger: true
@@ -20,7 +21,7 @@ fastifyServer.addSchema({
 // 핵심 기능.
 // 이 방법 외에는 라우트와 플러그인을 추가할 수 없음.
 fastifyServer.register(userRoute);
-
+fastifyServer.register(bookRoute);
 /*
 Fastify 에서 무적권 'register' 를 통해서만 외부 Library, Plugin 을 추가하게 한 것은
 Asynchronous 하게 동작하는 노드의 기본 철학을 지키면서, 다른 외부 종속 모듈의 '순서'를 지키게 하기 위해서다.
