@@ -1,5 +1,5 @@
 import fastify from "fastify";
-import {userRoute} from './routes/users/user';
+import {usersRoute} from './routes/users/user';
 import {bookRoute} from './routes/books/book';
 
 const fastifyServer = fastify({
@@ -20,7 +20,8 @@ fastifyServer.addSchema({
 
 // 핵심 기능.
 // 이 방법 외에는 라우트와 플러그인을 추가할 수 없음.
-fastifyServer.register(userRoute);
+// fastifyServer.register(userRoute);
+fastifyServer.register(usersRoute);
 fastifyServer.register(bookRoute);
 /*
 Fastify 에서 무적권 'register' 를 통해서만 외부 Library, Plugin 을 추가하게 한 것은

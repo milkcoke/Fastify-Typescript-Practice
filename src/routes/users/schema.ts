@@ -39,7 +39,7 @@ const userSchema = {
     // it's not allowed null or undefined
     // body: null,
     // querystring: null,
-    params: searchById
+    params: searchById,
     // headers: undefined
 }
 

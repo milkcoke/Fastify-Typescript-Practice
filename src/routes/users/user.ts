@@ -53,4 +53,7 @@ async function routes(fastify: any, options: any) {
 }
 */
 
-export {routes as userRoute};
+export {
+    // routes as userRoute,
+    routeAsync as usersRoute
+};
