@@ -2,8 +2,8 @@ import dataGenerator from "dummy-data-generator";
 import path from 'path';
 import fs from 'fs';
 
-const data = dataGenerator({
-    count: 10,
+const userSchema = dataGenerator({
+    count: 100,
     columnData: {
         id : {
             type: 'randomNumber',
@@ -22,7 +22,26 @@ const data = dataGenerator({
     isCSV: false
 });
 
-const serializedUsers = JSON.stringify(data);
 
-fs.writeFileSync(path.join(__dirname, 'users100.json'), serializedUsers, {encoding : 'utf-8'})
+const bookSchema = dataGenerator({
+    count: 100,
+    columnData: {
+        name : {
+            type: 'name'
+        },
+        publishDate: {
+            type: 'date'
+        },
+        author: {
+            type: 'name'
+        }
+    },
+    isCSV: false
+});
+
+const serializedUsers = JSON.stringify(userSchema);
+const serializedBooks = JSON.stringify(bookSchema)
+
+fs.writeFileSync(path.join(__dirname, 'users100.json'), serializedUsers, {encoding : 'utf-8'});
+fs.writeFileSync(path.join(__dirname, 'books100.json'), serializedBooks, {encoding : 'utf-8'})
 
