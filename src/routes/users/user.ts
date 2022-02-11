@@ -24,6 +24,26 @@ interface IHeaders {
 }
 
 
+// [Recommended]
+// 1. wrapping with async route function
+// 2. Make handler function as async too.
+async function routeAsync(fastify: FastifyInstance) {
+    fastify.route({
+        method: 'GET',
+        url: '/users',
+        schema: {
+
+        },
+        handler : getAllUsers
+    });
+
+    fastify.route({
+        method: 'GET',
+        url: '/users/:userId',
+        schema: userSchema,
+        handler : searchByUserIdHandler
+    })
+}
 
 
 async function routes(fastify: FastifyInstance, options: any) {
@@ -36,22 +56,17 @@ async function routes(fastify: FastifyInstance, options: any) {
         async (request: FastifyRequest<{Params: SearchByIdParam}>, reply: FastifyReply)=>{
         // 그냥 하면 에러남.
         // Object is of type 'unknown'.
-        return {user: users100.find(user=>user.id === request.params.userId)}
+        return users100.find(user=>user.id === request.params.userId) ?? reply.callNotFound();
     })
 }
 
-/*
-async function routes(fastify: any, options: any) {
-    fastify.get<{
-        Params: IParam,
-        Headers: IHeaders
-    }>('/users/:userId', {schema}, async (request: FastifyRequest, reply: FastifyReply)=>{
-        // 그냥 하면 에러남.
-        // Object is of type 'unknown'.
-        return {users: users100.find(user=>user.id === request.params.userId)}
-    })
+async function getAllUsers(request: FastifyRequest, reply: FastifyReply) {
+    return users100;
 }
-*/
+
+async function searchByUserIdHandler(request: FastifyRequest<{Params: SearchByIdParam}>, reply: FastifyReply) {
+    return users100.find(user=>user.id === request.params.userId) ?? reply.callNotFound();
+}
 
 export {
     // routes as userRoute,
