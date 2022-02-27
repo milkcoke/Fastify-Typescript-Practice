@@ -35,12 +35,52 @@ const userProfileOutput = {
 type SearchByIdParam = FromSchema<typeof searchById>;
 // type UserResponse = FromSchema<typeof userResponseSchema>;
 
+// The reason to use response schema
+// Drastically increase throughput and help prevent accidental disclosure of sensitive information.
+
+// 다음과 같은 상황 방지하기 편하다.
+// ex1) Throw new Error 코드를 그대로 노출시킴으로써 DB 설정 정보를 노출 (IP, PORT)
+// ex2) 특정한 개인 정보 디버깅 stacktrace 를 노출
+
 const userSchema = {
     // it's not allowed null or undefined
     // body: null,
     // querystring: null,
     params: searchById,
     // headers: undefined
+
+
+
+    response: {
+        200: {
+            type: 'object',
+            properties: {
+                id: {type: 'number'},
+                name: {type: 'string'},
+                email: {type: 'string'},
+                registerDate: {type: 'string'}
+            }
+        },
+        // Coerce the value according to this schema type
+        // https://www.fastify.io/docs/latest/Reference/Validation-and-Serialization/
+        // 에러 커스터마이징은
+        // 1. 커스텀 클래스 작성
+        // 2. ajv schemaCompiler 사용
+        // 총 2가지 방법이 있음.
+        // 여기서는 커스텀 클래스로 대응해봄.
+        403: {
+            type: 'string'
+        },
+        404: {
+            type: 'object',
+            properties: {
+                message: {type: 'string'},
+                error: {type: 'string'},
+                statusCode: {type: 'number'}
+            }
+        }
+    }
+
 }
 
 

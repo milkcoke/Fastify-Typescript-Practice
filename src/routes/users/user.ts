@@ -8,6 +8,7 @@ import {
     userSchema,
     SearchByIdParam
 } from "./schema";
+import {NotFoundError, UserError} from "../../error/UserError";
 
 // 타입스크립트 Generics
 interface IQuerystring {
@@ -42,7 +43,7 @@ async function routeAsync(fastify: FastifyInstance) {
         url: '/users/:userId',
         schema: userSchema,
         handler : searchByUserIdHandler
-    })
+    });
 }
 
 
@@ -65,7 +66,16 @@ async function getAllUsers(request: FastifyRequest, reply: FastifyReply) {
 }
 
 async function searchByUserIdHandler(request: FastifyRequest<{Params: SearchByIdParam}>, reply: FastifyReply) {
-    return users100.find(user=>user.id === request.params.userId) ?? reply.callNotFound();
+    const user = users100.find(user=>user.id === request.params.userId);
+
+    if (!user) {
+        // new NotFoundError(`userId : ${request.params.userId} doesn't exist`);
+        // 공식 문서에도 이렇게 나와있긴함..
+        reply.code(403).send(new NotFoundError(`userId : ${request.params.userId} doesn't exist`));
+        // return reply.callNotFound();
+    } else {
+       return user;
+    }
 }
 
 export {
