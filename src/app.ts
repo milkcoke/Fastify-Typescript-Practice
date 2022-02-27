@@ -1,6 +1,11 @@
 import fastify from "fastify";
+import fastifySwagger from "fastify-swagger";
+import axios from "axios";
+import fs from "fs";
+import path from "path";
 import {usersRoute} from './routes/users/user';
 import {bookRoute} from './routes/books/book';
+
 
 const fastifyServer = fastify({
     logger: true
@@ -17,6 +22,28 @@ fastifyServer.addSchema({
     }
 });
 
+
+fastifyServer.register(fastifySwagger, {
+    routePrefix: 'documentation',
+    openapi: {
+        info: {
+            title: 'Fastify-Typescript-Project',
+            description: 'This is for testing fastify with typescript',
+            version: '1.0.0'
+        },
+        servers: [{
+            url: 'http://localhost'
+        }],
+        components: {
+
+        },
+        tags: [
+
+        ]
+    },
+    hideUntagged: false,
+    exposeRoute: true
+});
 
 // 핵심 기능.
 // 이 방법 외에는 라우트와 플러그인을 추가할 수 없음.
@@ -40,4 +67,19 @@ fastifyServer.listen(5000 ,'127.0.0.1', (err, address)=>{
     } else {
         console.log(`fastify server is listening on ${address}`);
     }
+});
+
+fastifyServer.ready()
+.then(async ()=>{
+    await axios({
+        method: 'GET',
+        baseURL: 'http://localhost:5000',
+        url: '/documentation/yaml',
+    })
+    .then(({data})=>{
+        console.dir(data);
+        fs.writeFileSync(path.join(__dirname, '..', 'docs/OAI.yaml'), data, {encoding : 'utf8'});
+        console.log('Write complete Open API 3.0.3 file!');
+    })
+    .catch(console.error);
 })

@@ -1,0 +1,87 @@
+openapi: 3.0.3
+info:
+  title: Fastify-Typescript-Project
+  description: This is for testing fastify with typescript
+  version: 1.0.0
+components:
+  schemas:
+    def-0:
+      type: object
+      properties:
+        id:
+          type: number
+        name:
+          type: string
+        email:
+          type: string
+        registerDate:
+          type: string
+      title: user
+paths:
+  /users:
+    get:
+      responses:
+        '200':
+          description: Default Response
+  /users/{userId}:
+    get:
+      parameters:
+        - in: path
+          name: userId
+          required: true
+          schema:
+            type: number
+      responses:
+        '200':
+          description: Default Response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: number
+                  name:
+                    type: string
+                  email:
+                    type: string
+                  registerDate:
+                    type: string
+        '403':
+          description: Default Response
+          content:
+            application/json:
+              schema:
+                type: string
+        '404':
+          description: Default Response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                  error:
+                    type: string
+                  statusCode:
+                    type: number
+  /books:
+    get:
+      responses:
+        '200':
+          description: Default Response
+  /books/{bookName}:
+    get:
+      parameters:
+        - in: path
+          name: bookName
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Default Response
+servers:
+  - url: http://localhost
+tags: []
