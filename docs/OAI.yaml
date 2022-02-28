@@ -10,21 +10,72 @@ components:
       properties:
         id:
           type: number
+          format: int64
+          minimum: 1
         name:
           type: string
         email:
           type: string
+          format: email
         registerDate:
           type: string
+          format: date-time
       title: user
+    def-1:
+      type: object
+      properties:
+        name:
+          type: string
+        publishDate:
+          type: string
+          format: date-time
+        author:
+          type: string
+      title: book
 paths:
   /users:
     get:
+      tags:
+        - users
       responses:
         '200':
           description: Default Response
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    id:
+                      type: number
+                      format: int64
+                      minimum: 1
+                    name:
+                      type: string
+                    email:
+                      type: string
+                      format: email
+                    registerDate:
+                      type: string
+                      format: date-time
+        '404':
+          description: Default Response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                  error:
+                    type: string
+                  statusCode:
+                    type: number
   /users/{userId}:
     get:
+      tags:
+        - users
       parameters:
         - in: path
           name: userId
@@ -41,12 +92,16 @@ paths:
                 properties:
                   id:
                     type: number
+                    format: int64
+                    minimum: 1
                   name:
                     type: string
                   email:
                     type: string
+                    format: email
                   registerDate:
                     type: string
+                    format: date-time
         '403':
           description: Default Response
           content:
@@ -68,11 +123,29 @@ paths:
                     type: number
   /books:
     get:
+      tags:
+        - books
       responses:
         '200':
           description: Default Response
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    name:
+                      type: string
+                    publishDate:
+                      type: string
+                      format: date-time
+                    author:
+                      type: string
   /books/{bookName}:
     get:
+      tags:
+        - books
       parameters:
         - in: path
           name: bookName
@@ -82,6 +155,22 @@ paths:
       responses:
         '200':
           description: Default Response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  name:
+                    type: string
+                  publishDate:
+                    type: string
+                    format: date-time
+                  author:
+                    type: string
 servers:
   - url: http://localhost
-tags: []
+tags:
+  - name: books
+    description: Books operations
+  - name: users
+    description: Users operations

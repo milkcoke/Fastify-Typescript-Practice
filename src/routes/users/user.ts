@@ -5,24 +5,11 @@ import {
 } from "fastify";
 import users100 from '../../../dummy/users100.json';
 import {
-    userSchema,
+    getAllUserSchema,
+    getUserByIdSchema,
     SearchByIdParam
 } from "./schema";
 import {NotFoundError, UserError} from "../../error/UserError";
-
-// 타입스크립트 Generics
-interface IQuerystring {
-    userId: number;
-    userName: string;
-    userEmail: string;
-    userRegisterDate: string;
-}
-interface IParam {
-    userId: number;
-}
-interface IHeaders {
-    'h-Custom' : string;
-}
 
 
 // [Recommended]
@@ -32,16 +19,14 @@ async function routeAsync(fastify: FastifyInstance) {
     fastify.route({
         method: 'GET',
         url: '/users',
-        schema: {
-
-        },
+        schema: getAllUserSchema,
         handler : getAllUsers
     });
 
     fastify.route({
         method: 'GET',
         url: '/users/:userId',
-        schema: userSchema,
+        schema: getUserByIdSchema,
         handler : searchByUserIdHandler
     });
 }
@@ -51,7 +36,7 @@ async function routes(fastify: FastifyInstance, options: any) {
     fastify.get('/users/:userId',
         {
             // 🌟 실제로 validation 은 이 파라미터에 따라 결정됨.
-            schema: userSchema
+            schema: getUserByIdSchema
         },
         // 💡 <{}> 는 Generic Type 을 사용하기 위한 Debugging 용도일 뿐임.
         async (request: FastifyRequest<{Params: SearchByIdParam}>, reply: FastifyReply)=>{
