@@ -40,7 +40,7 @@ const bookSchema = dataGenerator({
 });
 
 const serializedUsers = JSON.stringify(userSchema);
-const serializedBooks = JSON.stringify(bookSchema)
+const serializedBooks = JSON.stringify(bookSchema);
 
 fs.writeFileSync(path.join(__dirname, 'users100.json'), serializedUsers, {encoding : 'utf-8'});
 fs.writeFileSync(path.join(__dirname, 'books100.json'), serializedBooks, {encoding : 'utf-8'})
