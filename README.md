@@ -48,4 +48,5 @@ Typescript interface 로 변환해주는 [json-schema-to-typescript](https://git
 
 ---
 ## 🔗 Reference
-[Fastify official document](https://www.fastify.io/docs/latest/Guides/Getting-Started/)
+- [Fastify official document](https://www.fastify.io/docs/latest/Guides/Getting-Started/)
+- [Fastify Twitter Example (Best practice) Repository](https://github.com/fastify/fastify-example-twitter/blob/master/user/schemas.js)
