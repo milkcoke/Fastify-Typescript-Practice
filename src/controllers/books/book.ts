@@ -2,7 +2,7 @@ import {FastifyInstance, FastifyRequest, FastifyReply} from "fastify";
 import books100 from '../../../dummy/books100.json';
 import {searchBookByNameSchema, paramSearchByBookName, getAllBooksSchema} from "./schema";
 
-async function route(fastify: FastifyInstance, options: any) {
+async function route(fastify: FastifyInstance) {
     // Full declaration for generating OAI 3.0.3 yaml file
     fastify.route({
         method: 'GET',

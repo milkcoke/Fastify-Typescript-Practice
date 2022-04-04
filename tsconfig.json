@@ -6,8 +6,9 @@
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {
-      "@docs/*"    : ["docs/*"],
-      "@models/*"  : ["src/models/*"]
+      "@docs/*"         : ["docs/*"],
+      "@models/*"       : ["src/models/*"],
+      "@controllers/*"  : ["src/controllers/*"]
     },
 
     /* Basic Options */

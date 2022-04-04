@@ -3,8 +3,8 @@ import fastifySwagger from "fastify-swagger";
 import axios from "axios";
 import fs from "fs";
 import path from "path";
-import {usersRoute} from './routes/users/user';
-import {bookRoute} from './routes/books/book';
+import {usersRoute} from './controllers/users/user';
+import {bookRoute} from './controllers/books/book';
 import {bookSchema, swaggerOptions, userSchema} from "../docs/swagger";
 
 
