@@ -36,16 +36,6 @@ Typescript interface 로 변환해주는 [json-schema-to-typescript](https://git
   순수 디버깅용도인데 별도의 작업이 한번 더 들어가는 것은 귀찮은 일. \
   interface 생성없이 코드를 사용하고 싶다면 [json-schema-to-ts](https://github.com/ThomasAribart/json-schema-to-ts) \
   그러나 이때도 `as const` 등의 키워드를 반드시 붙여야함.
-  - **Using Generics** \
-  다음 4가지 귀찮은 과정을 거쳐야함.
-  1. interface 설정
-    - Body
-    - Querystring
-    - Params
-    - Headers
-    - Reply
-  2.
-
 ---
 ## 🔗 Reference
 - [Fastify official document](https://www.fastify.io/docs/latest/Guides/Getting-Started/)
