@@ -5,11 +5,11 @@ import fs from "fs";
 import path from "path";
 import {usersRoute} from './controllers/users/user';
 import {bookRoute} from './controllers/books/book';
-import {bookSchema, swaggerOptions, userSchema} from "../docs/swagger";
+import {bookSchema, swaggerOptions, userSchema} from "@docs/swagger";
 
 
 const fastifyServer = fastify({
-    logger: true
+    logger: false
 });
 
 fastifyServer.addSchema(userSchema);
@@ -41,16 +41,14 @@ fastifyServer.listen(5000 ,'localhost', (err, address)=>{
 });
 
 fastifyServer.ready()
-.then(async ()=>{
-    await axios({
-        method: 'GET',
-        baseURL: 'http://localhost:5000',
-        url: '/documentation/yaml',
+    .then(async ()=>{
+        await axios({
+            method: 'GET',
+            baseURL: 'http://localhost:5000',
+            url: '/documentation/yaml',
+        })
+        .then(({data})=>{
+            fs.writeFileSync(path.join(__dirname, '..', 'docs/OAI.yaml'), data, {encoding : 'utf8'});
+        })
+        .catch(console.error);
     })
-    .then(({data})=>{
-        console.dir(data);
-        fs.writeFileSync(path.join(__dirname, '..', 'docs/OAI.yaml'), data, {encoding : 'utf8'});
-        console.log('Write complete Open API 3.0.3 file!');
-    })
-    .catch(console.error);
-})
