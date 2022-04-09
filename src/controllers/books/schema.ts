@@ -1,4 +1,3 @@
-
 // name, publishDate, author
 import {FromSchema} from "json-schema-to-ts";
 import {bookSchema} from "@docs/swagger";
@@ -27,20 +26,45 @@ const responseByBookNameJson = {
 
 type paramSearchByBookName = FromSchema<typeof paramSearchByBookNameJson>;
 
+const createBookBodyJson = {
+    type: 'object',
+    properties: {
+        name: {
+            type: 'string'
+        },
+        author: {
+            type: 'string'
+        },
+        publishDate: {
+            type:  'string',
+            format: 'date'
+        }
+    }
+} as const;
+
+type addBookBody = FromSchema<typeof createBookBodyJson>;
+
 const searchBookByNameSchema = {
-    tags: ['books'],
+    tags: ['Books'],
     params: paramSearchByBookNameJson,
     response: responseByBookNameJson
 };
 
 const getAllBooksSchema = {
-    tags: ['books'],
+    tags: ['Books'],
     response: responseAllBooksJson
 }
 
+const addBookSchema = {
+    tags: ['Books'],
+    body: createBookBodyJson
+}
 export {
     paramSearchByBookName,
     getAllBooksSchema,
-    searchBookByNameSchema
+    searchBookByNameSchema,
+
+    addBookBody,
+    addBookSchema
 }
 

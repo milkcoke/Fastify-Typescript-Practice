@@ -14,8 +14,8 @@ const swaggerOptions = {
 
         },
         tags: [
-            {name: 'books', description: 'Books operations'},
-            {name: 'users', description: 'Users operations'}
+            {name: 'Books', description: 'Books operations'},
+            {name: 'Users', description: 'Users operations'}
         ]
     },
     hideUntagged: false,
