@@ -4,6 +4,7 @@ const bookSchema = new mongoose.Schema({
     name: {
         type: String,
         required: true,
+        unique: true
     },
     publishDate: {
         type: Date
@@ -13,8 +14,8 @@ const bookSchema = new mongoose.Schema({
     },
 });
 
-const Book = mongoose.model('Book', bookSchema);
+const bookModel = mongoose.model('Book', bookSchema);
 
 export {
-    Book
+    bookModel
 }

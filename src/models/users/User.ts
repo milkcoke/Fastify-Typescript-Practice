@@ -8,6 +8,7 @@ const userSchema = new mongoose.Schema({
     },
     email: {
         type: String,
+        unique: true,
     },
     registerDate: {
         type: Date
@@ -16,8 +17,8 @@ const userSchema = new mongoose.Schema({
 
 // Model: DBO (데이터 인터페이스)
 // User model 생성
-const User = mongoose.model('User', userSchema);
+const userModel = mongoose.model('User', userSchema);
 
 export {
-    User
+    userModel
 }
