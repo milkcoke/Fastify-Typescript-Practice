@@ -1,6 +1,7 @@
 import {FastifyInstance, FastifyRequest, FastifyReply} from "fastify";
-import books100 from '../../../dummy/books100.json';
-import {searchBookByNameSchema, paramSearchByBookName, getAllBooksSchema} from "./schema";
+import books100 from '@test/dummyData/books100.json';
+import {searchBookByNameSchema, paramSearchByBookName, getAllBooksSchema, addBookSchema, addBookBody} from "./schema";
+import {bookModel} from "@models/books/Book";
 
 async function route(fastify: FastifyInstance) {
     // Full declaration for generating OAI 3.0.3 yaml file
@@ -17,6 +18,13 @@ async function route(fastify: FastifyInstance) {
         schema: searchBookByNameSchema,
         handler: searchByBookNameHandler
     });
+
+    fastify.route({
+        method: 'POST',
+        url: '/books',
+        schema: addBookSchema,
+        handler: createBook
+    })
 }
 
 
@@ -28,5 +36,32 @@ async function searchByBookNameHandler(request: FastifyRequest<{Params: paramSea
     return books100.find(book=>book.name === request.params.bookName) ?? reply.callNotFound();
 }
 
+// Model 을 통한 create
+async function createMockBooks() {
+    return bookModel.create(books100);
+}
 
-export {route as bookRoute};
+async function createBook(request: FastifyRequest<{Body: addBookBody}>, reply: FastifyReply) {
+    const newBook = request.body;
+
+    try {
+        const result = await bookModel.create(newBook);
+
+        return reply
+            .code(201)
+            .headers({
+                'Content-Location': `/books/1`
+            })
+            .send(result);
+    } catch (err: unknown) {
+        if (err instanceof Error) {
+            console.error(err);
+        }
+    }
+}
+
+export {
+    route as bookRoute,
+    createMockBooks,
+    createBook
+};

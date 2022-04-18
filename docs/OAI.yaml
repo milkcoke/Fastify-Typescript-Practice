@@ -142,6 +142,25 @@ paths:
                       format: date-time
                     author:
                       type: string
+    post:
+      tags:
+        - books
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                author:
+                  type: string
+                publishDate:
+                  type: string
+                  format: date
+      responses:
+        '200':
+          description: Default Response
   /books/{bookName}:
     get:
       tags:
@@ -170,7 +189,7 @@ paths:
 servers:
   - url: http://localhost
 tags:
-  - name: books
+  - name: Books
     description: Books operations
-  - name: users
+  - name: Users
     description: Users operations
