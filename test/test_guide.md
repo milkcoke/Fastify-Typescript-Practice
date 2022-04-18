@@ -11,6 +11,9 @@ Fastify 로 Mock 테스팅하려면 다음 패키지가 필요하다.
 > `inject()` 덕분에 `server.listen()` 같은 코드없이 테스트를 할 수 있다. \
 별도의 서버를 띄우지 않아도 된다.
 
+### Fastify inject() 란?
+Fake HTTP request\
+=> [axios](https://github.com/axios/axios) 와 비슷한 형식으로 request configuration 을 통해 mock test 를 용이하게한다.
 
 ## How to Configure application & test code
 ### 1. 앱 서버 빌더 정의
@@ -60,3 +63,8 @@ describe('Should response code 200 test builder', () => {
     })
 })
 ```
+
+---
+
+## Reference
+- [Fastify Testing Guide docs](https://www.fastify.io/docs/latest/Guides/Testing/)
