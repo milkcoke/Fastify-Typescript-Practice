@@ -3,7 +3,7 @@
 ## Introduction
 express 대비 약 3배의 throughput 을 자랑하는 프레임워크
 
-## Benefit
+## Pros
 #### async API 지원
 ES7 이후 모든 API 문법 지원, 외부 모듈 필요 ❌
 
@@ -36,6 +36,7 @@ Typescript interface 로 변환해주는 [json-schema-to-typescript](https://git
   순수 디버깅용도인데 별도의 작업이 한번 더 들어가는 것은 귀찮은 일. \
   interface 생성없이 코드를 사용하고 싶다면 [json-schema-to-ts](https://github.com/ThomasAribart/json-schema-to-ts) \
   그러나 이때도 `as const` 등의 키워드를 반드시 붙여야함.
+
 ---
 ## 🔗 Reference
 - [Fastify official document](https://www.fastify.io/docs/latest/Guides/Getting-Started/)
