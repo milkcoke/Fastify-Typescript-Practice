@@ -1,0 +1,26 @@
+// Protocol Buffer version 3
+syntax = "proto3";
+// package name
+package employee;
+
+message EmployeeRequest {
+  int32 id = 1;
+}
+
+// Field numbers between 1-15 use 1 byte of space during encoding.
+// Use like this
+message EmployeeInfo {
+  int32 id = 1;
+  string email = 2;
+  string firstName = 3;
+  string lastName = 4;
+}
+
+message EmployeeResponse {
+  EmployeeInfo message = 1;
+}
+
+service Employee {
+  rpc getInformation (EmployeeRequest) returns (EmployeeResponse) {}
+}
+
