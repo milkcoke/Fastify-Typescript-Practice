@@ -7,21 +7,24 @@
     "test": "jest -c test/jest.config.js"
   },
   "devDependencies": {
-    "@types/jest": "^27.4.1",
+    "@types/jest": "^28.1.4",
     "@types/mongoose": "^5.11.97",
-    "@types/node": "^17.0.23",
-    "fastify-swagger": "^5.1.0",
-    "jest": "^27.5.1",
-    "json-schema-to-ts": "^2.0.0",
-    "ts-jest": "^27.1.4",
-    "tsconfig-paths": "^3.14.1",
-    "typescript": "^4.6.3"
+    "@types/node": "^18.0.3",
+    "jest": "^28.1.2",
+    "json-schema-to-ts": "^2.5.4",
+    "ts-jest": "^28.0.5",
+    "tsconfig-paths": "^4.0.0",
+    "typescript": "^4.7.4"
   },
   "dependencies": {
-    "axios": "^0.26.1",
-    "dotenv": "^16.0.0",
+    "@fastify/swagger": "7.4.1",
+    "axios": "^0.27.2",
+    "dotenv": "^16.0.1",
     "dummy-data-generator": "^1.7.3",
-    "fastify": "^3.28.0",
-    "mongoose": "^6.2.10"
+    "fastify": "^4.2.0",
+    "fastify-typeorm-plugin": "^2.2.0",
+    "mongoose": "^6.4.3",
+    "pg": "^8.7.3",
+    "typeorm": "^0.3.7"
   }
 }
