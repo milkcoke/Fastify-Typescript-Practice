@@ -1,17 +1,20 @@
 import fastify from "fastify";
-import fastifySwagger from "fastify-swagger";
 import axios from "axios";
 import fs from "fs";
 import path from "path";
+import fastifySwagger from "@fastify/swagger";
+import fastifyTypeorm from "fastify-typeorm-plugin";
 import {usersRoute} from './controllers/users/user';
 import {bookRoute} from './controllers/books/book';
 import {bookSchema, swaggerOptions, userSchema} from "@docs/swagger";
+import {dataSource} from "../db/typeORMDataSource";
 
 
 const fastifyServer = fastify({
     logger: false
 });
-
+//@ts-ignore
+fastifyServer.register(fastifyTypeorm, {connection: dataSource});
 fastifyServer.addSchema(userSchema);
 fastifyServer.addSchema(bookSchema);
 fastifyServer.register(fastifySwagger, swaggerOptions);
@@ -32,11 +35,15 @@ express 나 다른 프레임워크에선 복잡한 콜백이나 promise 로 로�
  */
 
 // default listening ip : localhost => 0.0.0.0 (All), IPv6 0.0.0.0::0
-fastifyServer.listen(5000 ,'localhost', (err, address)=>{
+fastifyServer.listen({
+    port: Number(5000),
+    host: 'localhost'
+}, (err, address)=>{
     if (err) {
-        throw err;
+        console.error(err);
+        process.exit(1);
     } else {
-        console.log(`fastify server is listening on ${address}`);
+        console.log(`Server is listening at : ${address}`);
     }
 });
 
@@ -49,6 +56,7 @@ fastifyServer.ready()
         })
         .then(({data})=>{
             fs.writeFileSync(path.join(__dirname, '..', 'docs/OAI.yaml'), data, {encoding : 'utf8'});
+            console.log('Document.yaml file created!')
         })
         .catch(console.error);
     })
