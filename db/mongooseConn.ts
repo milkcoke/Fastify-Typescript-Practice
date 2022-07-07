@@ -3,13 +3,13 @@ import dotenv from 'dotenv';
 import path from "path";
 
 const {
-    DB_URI,
-    DB_USERNAME, DB_PASSWORD
+    MONGO_DB_URI,
+    MONGO_DB_USERNAME, MONGO_DB_PASSWORD
 } = dotenv.config({path: path.join(__dirname, '../..', '.env')}).parsed!;
 
-const mongooseConn = mongoose.connect(DB_URI, {
-    user: DB_USERNAME,
-    pass: DB_PASSWORD
+const mongooseConn = mongoose.connect(MONGO_DB_URI, {
+    user: MONGO_DB_USERNAME,
+    pass: MONGO_DB_PASSWORD
 });
 
 
