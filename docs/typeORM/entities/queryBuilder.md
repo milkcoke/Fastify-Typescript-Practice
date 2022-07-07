@@ -46,6 +46,45 @@ from employee
 left join department on employee.dept_no = department.dept_no;
 ```
 
+### `innerJoin()` vs `innerJoinAndSelect()`
+#### innerJoin()
+오로지 select 절에서 선택한 attribute 만 끌어옴 \
+You can inner join without its selection.
+```typescript
+const user = await createQueryBuilder("user")
+    .innerJoin("user.photos", "photo")
+    .where("user.name = :name", { name: "Timber" })
+    .getOne()
+```
+will generate
+```sql
+-- select only attributes in `.select()`
+-- or original (`from` clause) table attributes
+SELECT user.* FROM users user
+    INNER JOIN photos photo ON photo.user = user.id
+    WHERE user.name = 'Timber'
+```
+#### innerJoinAndSelect
+AndSelect => **Select all attributes** from join table.
+```typescript
+const user = await createQueryBuilder("user")
+    .innerJoinAndSelect(
+        "user.photos",
+        "photo",
+        "photo.isRemoved = :isRemoved",
+        { isRemoved: false },
+    )
+    .where("user.name = :name", { name: "Timber" })
+    .getOne()
+```
+
+will generate:
+```sql
+--- get all attributes from joined table
+SELECT user.*, photo.* FROM users user
+    INNER JOIN photos photo ON photo.user = user.id AND photo.isRemoved = FALSE
+    WHERE user.name = 'Timber'
+```
 ### Result
 The output that we will get is as follows :-
 As left join gives the matching rows and the rows that are present in the left table but not in right table.
