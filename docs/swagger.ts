@@ -1,14 +1,16 @@
 
 const swaggerOptions = {
-    routePrefix: 'documentation',
+    routePrefix: '/documentation',
+    exposeRoute: true,
     openapi: {
         info: {
             title: 'Fastify-Typescript-Project',
             description: 'This is for testing fastify with typescript',
             version: '1.0.0'
         },
+        host: 'localhost:' + '5000',
         servers: [{
-            url: 'http://localhost'
+            url: 'http://localhost:5000'
         }],
         components: {
 
@@ -18,8 +20,13 @@ const swaggerOptions = {
             {name: 'Users', description: 'Users operations'}
         ]
     },
+    uiConfig: {
+        docExpansion: 'full',
+        deepLinking: false
+    },
+    staticCSP: false,
     hideUntagged: false,
-    exposeRoute: true
+
 }
 
 const userSchema = {
