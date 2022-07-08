@@ -2,7 +2,7 @@ import {BaseEntity, Column, Entity, JoinColumn, ManyToOne, PrimaryColumn} from "
 import {User} from "./User";
 
 @Entity('contents', {schema: 'public'})
-export class Contents extends BaseEntity{
+export class Contents extends BaseEntity {
     @PrimaryColumn({name: 'contents_id', type: 'integer'})
     contentsId!: number;
 
