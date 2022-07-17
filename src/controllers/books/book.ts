@@ -1,6 +1,6 @@
 import {FastifyInstance, FastifyRequest, FastifyReply} from "fastify";
 import books100 from '@test/dummyData/books100.json';
-import {searchBookByNameSchema, paramSearchByBookName, getAllBooksSchema, addBookSchema, addBookBody} from "./schema";
+import {searchBookByNameSchema, paramSearchByBookName, getAllBooksSchema, addBookSchema, addBookBody} from "@controllers/books/schema";
 import {bookModel} from "@models/books/Book";
 
 async function route(fastify: FastifyInstance) {

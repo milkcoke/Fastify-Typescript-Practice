@@ -29,7 +29,7 @@ type SearchByIdParam = FromSchema<typeof searchByIdJson>;
 // ex1) Throw new Error 코드를 그대로 노출시킴으로써 DB 설정 정보를 노출 (IP, PORT)
 // ex2) 특정한 개인 정보 디버깅 stacktrace 를 노출
 const getUserByIdSchema = {
-    tags: ['users'],
+    tags: ['Users'],
     // it's not allowed null or undefined
     // body: null,
     // querystring: null,
@@ -53,8 +53,9 @@ const getAllUserResponseJson = {
     type: 'array',
     items: userSchema
 } as const;
+
 const getAllUserSchema = {
-    tags: ['users'],
+    tags: ['Users'],
     response: {
         200: getAllUserResponseJson,
         404: notFoundSchema

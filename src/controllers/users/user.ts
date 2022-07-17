@@ -8,8 +8,9 @@ import {
     getAllUserSchema,
     getUserByIdSchema,
     SearchByIdParam
-} from "./schema";
-import {NotFoundError, UserError} from "../../error/UserError";
+} from "@controllers/users/schema";
+import {NotExistUser} from '../../../custom_error/NotExistUser';
+
 
 
 // [Recommended]
@@ -39,10 +40,9 @@ async function searchByUserIdHandler(request: FastifyRequest<{Params: SearchById
     const user = users100.find(user=>user.id === request.params.userId);
 
     if (!user) {
-        // new NotFoundError(`userId : ${request.params.userId} doesn't exist`);
-        // 공식 문서에도 이렇게 나와있긴함..
-        reply.code(403).send(new NotFoundError(`userId : ${request.params.userId} doesn't exist`));
-        // return reply.callNotFound();
+        return reply
+            .code(404)
+            .send(new NotExistUser(`userId : ${request.params.userId} doesn't exist`));
     } else {
        return user;
     }
