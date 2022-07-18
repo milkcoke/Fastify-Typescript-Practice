@@ -1,0 +1,14 @@
+{
+  "apps" : [
+      {
+        "name"        : "Web Server",
+        "cwd"         : "src",
+        "script"      : "yarn run start:dev",
+        "watch"       : false,
+        "autorestart" : true,
+        "out_file"    : "logs/web-server-out.log",
+        "error_file"  : "logs/web-server-error.log",
+        "log_date_format" : "YYYY-MM-DDTHH:mm:ssZ"
+      }
+  ]
+}

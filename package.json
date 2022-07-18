@@ -1,11 +1,13 @@
 {
   "name": "fastify-typescript-practice",
   "version": "1.0.0",
-  "main": "src/app.ts",
+  "main": "dist/src/app.js",
   "license": "MIT",
   "scripts": {
+    "build": "tsc -p tsconfig.json",
     "test": "jest -c test/jest.config.js",
-    "dev": "ts-node src/app.ts"
+    "start:dev": "ts-node src/app.ts",
+    "start:prod": "yarn node -r ts-node/register -r tsconfig-paths/register dist/src/app.js"
   },
   "packageManager": "yarn@3.2.1",
   "devDependencies": {
