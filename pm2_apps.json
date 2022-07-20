@@ -3,9 +3,11 @@
       {
         "name"        : "Web Server",
         "cwd"         : "src",
-        "script"      : "yarn run start:dev",
+        "script"      : "yarn run ts-node app.ts",
+        "exec_mode"   : "cluster",
+        "instances"   : -1,
         "watch"       : false,
-        "autorestart" : true,
+        "autorestart" : false,
         "out_file"    : "logs/web-server-out.log",
         "error_file"  : "logs/web-server-error.log",
         "log_date_format" : "YYYY-MM-DDTHH:mm:ssZ"
