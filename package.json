@@ -5,6 +5,7 @@
   "license": "MIT",
   "scripts": {
     "build": "tsc -p tsconfig.json",
+    "generate-model": "dotenv -e .env -- cross-var npx typeorm-model-generator -e postgres -h %POSTGRE_DB_HOST% -d %POSTGRE_DB_NAME% -u %POSTGRE_DB_USER% -p %POSTGRE_DB_PORT% --pass %POSTGRE_DB_PASSWORD% --strictMode !",
     "test": "jest -c test/jest.config.js",
     "start": "pm2 start pm2_apps.json && pm2 monit"
   },
