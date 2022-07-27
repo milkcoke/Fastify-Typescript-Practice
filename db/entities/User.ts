@@ -1,10 +1,15 @@
-import {BaseEntity, Column, Entity, PrimaryColumn} from "typeorm";
+import {BaseEntity, Column, Entity, Index, OneToMany} from "typeorm";
+import { Contents } from "./Contents";
 
-@Entity('User', {schema: 'public'})
-export class User extends BaseEntity{
-    @PrimaryColumn({type: 'varchar', length: 10})
+@Index("user_pk", ["id"], { unique: true })
+@Entity("User", { schema: "public" })
+export class User extends BaseEntity {
+    @Column("character varying", { primary: true, name: "id", length: 10 })
     id!: string;
 
-    @Column({type: 'varchar', length: 20})
-    name!: string;
+    @Column("character varying", { name: "name", nullable: true, length: 20 })
+    name!: string | null;
+
+    @OneToMany(() => Contents, (contents) => contents.user)
+    contents!: Contents[];
 }
