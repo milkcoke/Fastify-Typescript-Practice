@@ -1,4 +1,5 @@
 {
+  "extends": "@tsconfig/node16-strictest-esm/tsconfig.json",
   "ts-node": {
     "transpileOnly": true,
     "require": ["tsconfig-paths/register"]
@@ -10,7 +11,8 @@
       "@data/*"         : ["data/*"],
       "@models/*"       : ["src/models/*"],
       "@controllers/*"  : ["src/controllers/*"],
-      "@test/*"         : ["test/*"]
+      "@test/*"         : ["test/*"],
+      "@db/*"           : ["db/*"]
     },
     "target": "ESNext",
     "module": "CommonJS",
@@ -25,7 +27,7 @@
     "strict": true,
     "alwaysStrict": true,
 
-    "moduleResolution": "node",
+    "moduleResolution": "Node16",
     "allowSyntheticDefaultImports": true,
     "esModuleInterop": true,
     "resolveJsonModule": true,

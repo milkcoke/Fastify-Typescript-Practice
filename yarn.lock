@@ -861,6 +861,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@tsconfig/node16-strictest-esm@npm:^1.0.3":
+  version: 1.0.3
+  resolution: "@tsconfig/node16-strictest-esm@npm:1.0.3"
+  checksum: cc5650a1752e29f1adf5c4ff0a60e4f948c34d5a1e489a4504f3125c8b9b6f915f94dcd06e0936211a349d067469380e25f6ab461a4c0fd4a3b71c7108378fd7
+  languageName: node
+  linkType: hard
+
 "@tsconfig/node16@npm:^1.0.2":
   version: 1.0.3
   resolution: "@tsconfig/node16@npm:1.0.3"
@@ -3028,6 +3035,7 @@ __metadata:
   resolution: "fastify-typescript-practice@workspace:."
   dependencies:
     "@fastify/swagger": 7.4.1
+    "@tsconfig/node16-strictest-esm": ^1.0.3
     "@types/jest": ^28.1.6
     "@types/mongoose": ^5.11.97
     "@types/node": ^18.6.1
