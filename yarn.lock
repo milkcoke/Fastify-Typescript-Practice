@@ -1092,6 +1092,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@typescript-plus/fast-memoize-decorator@npm:^0.1.0":
+  version: 0.1.0
+  resolution: "@typescript-plus/fast-memoize-decorator@npm:0.1.0"
+  dependencies:
+    fast-memoize: ^2.3.2
+  checksum: 54597ed62175e8d4202287fd50be5bc32dfc5b13732c2d115f544a321a8543ab84dd9a94d801911ea6ab7db906b4a8210dd9b9b7e0865857c6fc8b0bac9f8a6f
+  languageName: node
+  linkType: hard
+
 "abbrev@npm:1":
   version: 1.1.1
   resolution: "abbrev@npm:1.1.1"
@@ -2588,6 +2597,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"commander@npm:^6.2.0":
+  version: 6.2.1
+  resolution: "commander@npm:6.2.1"
+  checksum: d7090410c0de6bc5c67d3ca41c41760d6d268f3c799e530aafb73b7437d1826bbf0d2a3edac33f8b57cc9887b4a986dce307fa5557e109be40eadb7c43b21742
+  languageName: node
+  linkType: hard
+
 "concat-map@npm:0.0.1":
   version: 0.0.1
   resolution: "concat-map@npm:0.0.1"
@@ -3017,6 +3033,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"fast-memoize@npm:^2.3.2, fast-memoize@npm:^2.5.2":
+  version: 2.5.2
+  resolution: "fast-memoize@npm:2.5.2"
+  checksum: 79fa759719ba4eac7e8c22fb3b0eb3f18f4a31e218c00b1eb4a5b53c5781921133a6b84472d59ec5a6ea8f26ad57b43cd99a350c0547ccce51489bc9a5f0b28d
+  languageName: node
+  linkType: hard
+
 "fast-redact@npm:^3.1.1":
   version: 3.1.1
   resolution: "fast-redact@npm:3.1.1"
@@ -3081,6 +3104,7 @@ __metadata:
     json-schema-to-ts: ^2.5.5
     mongoose: ^6.5.0
     pg: ^8.7.3
+    pg-tables-to-jsonschema: ^1.0.5
     ts-jest: ^28.0.7
     ts-node: ^10.9.1
     tsconfig-paths: ^4.0.0
@@ -3320,7 +3344,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"graceful-fs@npm:^4.2.6, graceful-fs@npm:^4.2.9":
+"graceful-fs@npm:^4.1.6, graceful-fs@npm:^4.2.6, graceful-fs@npm:^4.2.9":
   version: 4.2.10
   resolution: "graceful-fs@npm:4.2.10"
   checksum: 3f109d70ae123951905d85032ebeae3c2a5a7a997430df00ea30df0e3a6c60cf6689b109654d6fdacd28810a053348c4d14642da1d075049e6be1ba5216218da
@@ -3489,10 +3513,28 @@ __metadata:
   languageName: node
   linkType: hard
 
+"indexable-array@npm:^0.7.0":
+  version: 0.7.0
+  resolution: "indexable-array@npm:0.7.0"
+  dependencies:
+    lodash.set: ^4.3.2
+    sorted-array-functions: ^1.2.0
+    tslib: ^2.1.0
+  checksum: 301f114ca093d605350af9dc12ec8059f9f51a9b7fdb96f52411d5ae7bf2b20092650445c0129e89d715ad58315986e2e37593f8b0982a6fa848fa80f8f63e3d
+  languageName: node
+  linkType: hard
+
 "infer-owner@npm:^1.0.4":
   version: 1.0.4
   resolution: "infer-owner@npm:1.0.4"
   checksum: 181e732764e4a0611576466b4b87dac338972b839920b2a8cde43642e4ed6bd54dc1fb0b40874728f2a2df9a1b097b8ff83b56d5f8f8e3927f837fdcb47d8a89
+  languageName: node
+  linkType: hard
+
+"inflection@npm:^1.12.0":
+  version: 1.13.2
+  resolution: "inflection@npm:1.13.2"
+  checksum: e7ad0559384ed7c526813404bde843f8f17941d47625ad60fc3b09e46efde873dd9840818007c6bd4dbe388e6248fa033d5a8c405c5fc62738c51b118a0e940f
   languageName: node
   linkType: hard
 
@@ -4201,12 +4243,25 @@ __metadata:
   languageName: node
   linkType: hard
 
-"json5@npm:^2.2.1":
+"json5@npm:^2.1.3, json5@npm:^2.2.1":
   version: 2.2.1
   resolution: "json5@npm:2.2.1"
   bin:
     json5: lib/cli.js
   checksum: 74b8a23b102a6f2bf2d224797ae553a75488b5adbaee9c9b6e5ab8b510a2fc6e38f876d4c77dea672d4014a44b2399e15f2051ac2b37b87f74c0c7602003543b
+  languageName: node
+  linkType: hard
+
+"jsonfile@npm:^6.0.1":
+  version: 6.1.0
+  resolution: "jsonfile@npm:6.1.0"
+  dependencies:
+    graceful-fs: ^4.1.6
+    universalify: ^2.0.0
+  dependenciesMeta:
+    graceful-fs:
+      optional: true
+  checksum: 7af3b8e1ac8fe7f1eccc6263c6ca14e1966fcbc74b618d3c78a0a2075579487547b94f72b7a1114e844a1e15bb00d440e5d1720bfc4612d790a6f285d5ea8354
   languageName: node
   linkType: hard
 
@@ -4258,6 +4313,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"lodash.get@npm:^4.4.2":
+  version: 4.4.2
+  resolution: "lodash.get@npm:4.4.2"
+  checksum: e403047ddb03181c9d0e92df9556570e2b67e0f0a930fcbbbd779370972368f5568e914f913e93f3b08f6d492abc71e14d4e9b7a18916c31fa04bd2306efe545
+  languageName: node
+  linkType: hard
+
 "lodash.memoize@npm:4.x":
   version: 4.1.2
   resolution: "lodash.memoize@npm:4.1.2"
@@ -4265,7 +4327,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"lodash@npm:^4.17.4, lodash@npm:^4.3.0":
+"lodash.set@npm:^4.3.2":
+  version: 4.3.2
+  resolution: "lodash.set@npm:4.3.2"
+  checksum: a9122f49eef9f2d0fc9061a33d87f8e5b8c6b23d46e8b9e9ce1529d3588d79741bd1145a3abdfa3b13082703e65af27ff18d8a07bfc22b9be32f3fc36f763f70
+  languageName: node
+  linkType: hard
+
+"lodash@npm:^4.17.20, lodash@npm:^4.17.4, lodash@npm:^4.3.0":
   version: 4.17.21
   resolution: "lodash@npm:4.17.21"
   checksum: eb835a2e51d381e561e508ce932ea50a8e5a68f4ebdd771ea240d3048244a8d13658acbd502cd4829768c56f2e16bdd4340b9ea141297d472517b83868e677f7
@@ -4880,7 +4949,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"pg-connection-string@npm:^2.5.0":
+"pg-connection-string@npm:^2.2.1, pg-connection-string@npm:^2.5.0":
   version: 2.5.0
   resolution: "pg-connection-string@npm:2.5.0"
   checksum: a6f3a068f7c9416a5b33a326811caf0dfaaee045c225b7c628b4c9b4e9a2b25bdd12a21e4c48940e1000ea223a4e608ca122d2ff3dd08c8b1db0fc9f5705133a
@@ -4910,6 +4979,39 @@ __metadata:
   languageName: node
   linkType: hard
 
+"pg-structure@npm:^7.2.6":
+  version: 7.13.0
+  resolution: "pg-structure@npm:7.13.0"
+  dependencies:
+    "@typescript-plus/fast-memoize-decorator": ^0.1.0
+    dotenv: ^8.2.0
+    fast-memoize: ^2.5.2
+    indexable-array: ^0.7.0
+    inflection: ^1.12.0
+    json5: ^2.1.3
+    lodash.get: ^4.4.2
+    pg: ^8.0.3
+    pg-connection-string: ^2.2.1
+  checksum: 0eaed28682ba78e03bfc75efe410658d0fea46b1a4fa3981539f5f6e95f070e0b2b6145865df41fa2005eda88d3e9b1cd00db0a9aed5f06191f6c211c28f80a8
+  languageName: node
+  linkType: hard
+
+"pg-tables-to-jsonschema@npm:^1.0.5":
+  version: 1.0.5
+  resolution: "pg-tables-to-jsonschema@npm:1.0.5"
+  dependencies:
+    commander: ^6.2.0
+    jsonfile: ^6.0.1
+    lodash: ^4.17.20
+    mkdirp: ^1.0.4
+    pg-structure: ^7.2.6
+    prompts: ^2.3.2
+  bin:
+    pgtables2jsonschema: lib/cli.js
+  checksum: e1bd251f85d3de197aae9bfe4b5ed7c1f5a7b77451693d0d6bcd5bc2e5c297c0af59669c3a8c24d33ea083abba6130cccac2de901f1fd363b36c5f795e1bfd03
+  languageName: node
+  linkType: hard
+
 "pg-types@npm:^2.1.0":
   version: 2.2.0
   resolution: "pg-types@npm:2.2.0"
@@ -4923,7 +5025,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"pg@npm:^8.7.3":
+"pg@npm:^8.0.3, pg@npm:^8.7.3":
   version: 8.7.3
   resolution: "pg@npm:8.7.3"
   dependencies:
@@ -5093,7 +5195,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"prompts@npm:^2.0.1":
+"prompts@npm:^2.0.1, prompts@npm:^2.3.2":
   version: 2.4.2
   resolution: "prompts@npm:2.4.2"
   dependencies:
@@ -5589,6 +5691,13 @@ __metadata:
   dependencies:
     atomic-sleep: ^1.0.0
   checksum: 526669b78e0ac3bcbe2a53e5ac8960d3b25e61d8e6a46eaed5a0c46d7212c5f638bb136236870babedfcb626063711ba8f81e538f88b79e6a90a5b2ff71943b4
+  languageName: node
+  linkType: hard
+
+"sorted-array-functions@npm:^1.2.0":
+  version: 1.3.0
+  resolution: "sorted-array-functions@npm:1.3.0"
+  checksum: 673fd39ca3b6c92644d4483eac1700bb7d7555713a536822a7522a35af559bef3e72f10d89356b75042dc394cd7c2e2ab6f40024385218ec3c85bb7335032857
   languageName: node
   linkType: hard
 
@@ -6232,6 +6341,13 @@ __metadata:
   dependencies:
     imurmurhash: ^0.1.4
   checksum: 5b6876a645da08d505dedb970d1571f6cebdf87044cb6b740c8dbb24f0d6e1dc8bdbf46825fd09f994d7cf50760e6f6e063cfa197d51c5902c00a861702eb75a
+  languageName: node
+  linkType: hard
+
+"universalify@npm:^2.0.0":
+  version: 2.0.0
+  resolution: "universalify@npm:2.0.0"
+  checksum: 2406a4edf4a8830aa6813278bab1f953a8e40f2f63a37873ffa9a3bc8f9745d06cc8e88f3572cb899b7e509013f7f6fcc3e37e8a6d914167a5381d8440518c44
   languageName: node
   linkType: hard
 
