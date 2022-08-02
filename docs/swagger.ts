@@ -33,10 +33,21 @@ const userSchema = {
     $id: 'user',
     type: 'object',
     properties: {
-        id: {type: 'number', format: 'int64', minimum: 1},
-        name: {type: 'string'},
-        email: {type: 'string', format: 'email'},
-        registerDate: {type: 'string', format: 'date-time'}
+        id: {
+            type: 'number',
+            format: 'int64',
+            minimum: 1
+        },
+        name: {
+            type: 'string'
+        },
+        email: {
+            type: 'string',
+            format: 'email'
+        },
+        registerDate: {
+            type: 'string', format: 'date-time'
+        }
     }
 }
 

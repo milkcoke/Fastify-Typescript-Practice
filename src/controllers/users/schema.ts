@@ -51,16 +51,18 @@ const getUserByIdSchema = {
 
 
 const getAllUserResponseJson = {
-    type: 'array',
-    items: userSchema
+    200: {
+        type: 'array',
+        items: {
+            properties: userJsonSchema.properties
+        }
+    },
+    404: notFoundSchema
 } as const;
 
 const getAllUserSchema = {
     tags: ['Users'],
-    response: {
-        200: getAllUserResponseJson,
-        404: notFoundSchema
-    }
+    response: getAllUserResponseJson
 }
 
 const getUserWithContentsParamsJson = {

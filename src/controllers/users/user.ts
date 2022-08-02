@@ -55,7 +55,15 @@ async function routeAsync(fastify: FastifyInstance) {
 }
 
 async function getAllUsers(request: FastifyRequest, reply: FastifyReply) {
-    return users100;
+    const allUsers = await this.orm.createQueryBuilder()
+                            .select('u.id, u.name, u.login_id')
+                            .from(User, 'u')
+                            .getRawMany();
+
+    console.dir(allUsers);
+    return reply
+        .code(200)
+        .send(allUsers);
 }
 
 async function getAllUsersName(request: FastifyRequest, reply: FastifyReply) {
