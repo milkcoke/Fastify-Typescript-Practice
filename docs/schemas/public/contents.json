@@ -1,0 +1,25 @@
+{
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "localhost:8080/public/contents.json",
+  "title": "contents",
+  "description": " ",
+  "properties": {
+    "contents_id": {
+      "type": "number",
+      "description": " . Database type: integer. Default value: null"
+    },
+    "contents_type": {
+      "type": "string",
+      "description": " . Database type: character varying. Default value: 'video'"
+    },
+    "user_id": {
+      "type": "number",
+      "description": " . Database type: integer. Default value: null"
+    }
+  },
+  "required": [
+    "contents_id"
+  ],
+  "type": "object"
+}
