@@ -1,13 +1,15 @@
 import fastify from "fastify";
 import axios from "axios";
-import fs from "fs";
+import {createWriteStream} from "fs";
 import path from "path";
 import fastifySwagger from "@fastify/swagger";
 import fastifyTypeorm from "fastify-typeorm-plugin";
 import {usersRoute} from './controllers/users/user';
 import {bookRoute} from './controllers/books/book';
 import {bookSchema, swaggerOptions, userSchema} from "@docs/swagger";
-import {dataSource} from "../db/typeORMDataSource";
+import {dataSource} from "@db/typeORMDataSource";
+import {Readable} from "stream";
+import {pipeline} from "stream/promises"
 
 
 const fastifyServer = fastify({
@@ -49,13 +51,15 @@ fastifyServer.listen({
 
 fastifyServer.ready()
     .then(async ()=>{
-        await axios({
+        return await axios({
             method: 'GET',
             baseURL: 'http://localhost:5000',
             url: '/documentation/yaml',
+            responseType: 'stream'
         })
-        .then(({data})=>{
-            fs.writeFileSync(path.join(__dirname, '..', 'docs/OAI.yaml'), data, {encoding : 'utf8'});
+        .then(async ({data}: Readable)=>{
+            await pipeline(data, createWriteStream(path.join(__dirname, '..', 'docs/OAI.yaml')))
+            // fs.writeFileSync(path.join(__dirname, '..', 'docs/OAI.yaml'), data, {encoding : 'utf8'});
             console.log('Document.yaml file created!')
         })
         .catch(console.error);
