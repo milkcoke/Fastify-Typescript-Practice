@@ -6,7 +6,7 @@ const swaggerOptions = {
         info: {
             title: 'Fastify-Typescript-Project',
             description: 'This is for testing fastify with typescript',
-            version: '1.0.0'
+            version: '1.0.1'
         },
         host: 'localhost:' + '5000',
         servers: [{
