@@ -1,10 +1,11 @@
 // 이건 마치 타입스크립트에서 interface 강제한 효과와 비슷한..?
 // 그러나 미묘하게 다름, Fastify 는 완벽히 typescript 를 지원하진 않음.
+import {FromSchema} from "json-schema-to-ts";
+import userJsonSchema from '@docs/schemas/public/User.json';
 
 // Reference: https://github.com/fastify/fastify-example-twitter/blob/master/user/schemas.js
 
 // Transform existing JSON Schemas into TS interface.
-import {FromSchema} from "json-schema-to-ts";
 import {
     userSchema,
     notFoundSchema
@@ -62,9 +63,67 @@ const getAllUserSchema = {
     }
 }
 
+const getUserWithContentsParamsJson = {
+    type: 'object',
+    properties: {
+        userId: {
+            type: 'string'
+        }
+    },
+    required: ['userId'],
+} as const;
+
+type getUserWithContentsParams = FromSchema<typeof getUserWithContentsParamsJson>;
+
+const getUserWithContentsSchema = {
+    tags: ['Users'],
+    params: getUserWithContentsParamsJson
+}
+
+const updateUserParamsJson = {
+    type: 'object',
+    properties: {
+        id: {
+            type: 'number',
+            description: 'PK, auto_increment'
+        }
+    },
+    required: ['id']
+} as const;
+
+type updateUserParams = FromSchema<typeof updateUserParamsJson>;
+
+const updateUserBodyJson = {
+    type: 'object',
+    properties: {
+        name: {
+            type: userJsonSchema.properties.name.type,
+        },
+        loginId: {
+            type: userJsonSchema.properties.login_id.type,
+            maxLength: userJsonSchema.properties.login_id.maxLength
+        }
+    }
+} as const;
+
+type updateUserBody = FromSchema<typeof updateUserBodyJson>;
+
+const updateUserSchema = {
+    tags: ['Users'],
+    body: updateUserBodyJson,
+    params: updateUserParamsJson,
+}
 
 export {
     SearchByIdParam,
     getUserByIdSchema,
-    getAllUserSchema
+
+    getAllUserSchema,
+
+    getUserWithContentsParams,
+    getUserWithContentsSchema,
+
+    updateUserParams,
+    updateUserBody,
+    updateUserSchema
 }
